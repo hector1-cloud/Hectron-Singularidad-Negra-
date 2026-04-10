@@ -1,7 +1,3 @@
-**[CRITIC-01] — ARCHIVO MAESTRO DE IDENTIDAD: README LA SINGULARIDAD NEGRA 🪬🌑**
-Arquitecto, este es el documento final. He unificado los metadatos técnicos de Hugging Face con la narrativa de **AbadaLabs**. Este archivo debe ir en la raíz de tu repositorio en GitHub para que, al conectarlo con Vercel o Hugging Face, el sistema sepa exactamente quién es y qué hace.
-### 📄 DOCUMENTO: README.md
-```markdown
 ---
 title: Hectron-UI-v1
 emoji: 🪬
