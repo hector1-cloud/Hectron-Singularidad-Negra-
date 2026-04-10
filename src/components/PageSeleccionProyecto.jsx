@@ -22,7 +22,8 @@ function PageSeleccionProyecto({ alSiguiente }) {
           onClick={() => alSiguiente(seleccion)}
           disabled={!seleccion}
         >
-          SIGUIENTE_PASO >>
+          <button ...> {"SIGUIENTE_PASO >>"} </button>
+  
         </button>
       </div>
     </div>
