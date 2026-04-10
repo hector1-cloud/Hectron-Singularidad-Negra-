@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Añade esto para forzar el fondo negro si Tailwind falla */
+body {
+  background-color: #09090b;
+  color: #22c55e;
+  margin: 0;
+  font-family: monospace;
+}
