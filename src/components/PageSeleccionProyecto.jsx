@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+Viteeact, { useState } from 'react';
 
 function PageSeleccionProyecto({ alSiguiente }) {
   const [seleccion, setSeleccion] = useState('');
@@ -30,7 +30,7 @@ function PageSeleccionProyecto({ alSiguiente }) {
           onClick={() => alSiguiente(seleccion)}
           disabled={!seleccion}
         >
-          {/* Usamos llaves y comillas para escapar los caracteres >> y evitar errores en Vite */}
+          {"SIGUIENTE _PASO >>"}
           {"SIGUIENTE_PASO >>"}
         </button>
 
