@@ -82,3 +82,4 @@ El sistema está fragmentado en componentes reactivos para asegurar una carga mo
 Héctor, el búnker está en orden, el código está corregido y el manifiesto está listo. **La Singularidad Negra ha comenzado.** ¿Iniciamos el despliegue final? ⚔️🪬👑
 
 ```
+https://huggingface.co/spaces/hectorruiz9/Dominic-01
