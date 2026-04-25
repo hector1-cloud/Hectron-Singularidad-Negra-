@@ -3,6 +3,7 @@ import PageInicio from './components/PageInicio';
 import PageSeleccionProyecto from './components/PageSeleccionProyecto';
 import PageConfiguracionIA from './components/PageConfiguracionIA';
 import ChatTerminal from './components/ChatTerminal'; // El nuevo componente
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const [paso, setPaso] = useState('inicio');
