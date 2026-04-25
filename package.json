@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "author": "Hector1-cloud <hectorruiz9992@gmail.com>",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
