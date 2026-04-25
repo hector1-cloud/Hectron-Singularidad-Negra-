@@ -58,6 +58,7 @@ To enable Speed Insights tracking on Vercel:
 - Speed Insights will only collect data when deployed to Vercel's platform, not in local development
 
 Co-authored-by: Vercel <vercel[bot]@users.noreply.github.com>
+
 {
   "name": "hectron-singularidad-negra",
   "private": true,
