@@ -1,154 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Toggler from './components/Toggler';
-import Dashboard from './screens/Dashboard';
-import Login from './screens/Login';
-import Reportes from './screens/Reportes';
-import MonitoreoGnosis from './screens/MonitoreoGnosis';
+import React from 'react';
 
-function HectronApp() {
-  const [logged, setLogged] = useState(false);
-  const [sintonizado, setSintonizado] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setLogged(true);
-    }
-  }, []);
-
-  const handleLogin = async (email, password) => {
-    try {
-      const response = await axios.post('/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      setLogged(true);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setLogged(false);
-  };
-
-  const handleSintonizar = () => {
-    setSintonizado(!sintonizado);
-  };
-
+function PageSeleccionProyecto({ alSiguiente }) {
   return (
-    <div className="flex h-screen justify-center items-center overflow-hidden">
-      {logged ? (
-        <div className="relative flex w-full items-center justify-between py-4">
-          <div className="hidden lg:block">
-            <img src="/hectron-logo.png" alt="Hectron logo" className="w-32" />
-          </div>
-          <div className="lg:hidden">
-            <Toggler
-              checked={sintonizado}
-              onChange={handleSintonizar}
-              label="Sintonizar"
-            />
-          </div>
-          <div className="hidden lg:flex">
-            <Toggler
-              checked={sintonizado}
-              onChange={handleSintonizar}
-              label="Sintonizar"
-              className="ml-auto"
-            />
-          </div>
-          <div className="lg:hidden">
-            <button
-              onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded"
-            >
-              Desconectar
-            </button>
-          </div>
+    <div className="h-screen flex items-center justify-center p-4">
+      <div className="max-w-2xl w-full bg-zinc-900 border border-green-500/20 p-8 rounded-xl shadow-[0_0_50px_rgba(0,0,0,1)]">
+        <h2 className="text-xl font-black mb-6 text-center tracking-widest text-white">
+          SELECCIONAR_TIPO_DE_PROYECTO
+        </h2>
+        <p className="text-zinc-500 text-sm mb-8 text-center leading-relaxed">
+          Elige el tipo de proyecto que deseas crear con HECTRON.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <button
+            className="bg-zinc-800 hover:bg-green-600/10 border border-green-500/30 hover:border-green-500 text-green-400 font-bold py-6 px-4 rounded shadow-[0_0_20px_rgba(34,197,94,0.1)] hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300 uppercase"
+            onClick={() => alSiguiente('web')}
+          >
+            Proyecto_Web
+          </button>
+          
+          <button
+            className="bg-zinc-800 hover:bg-green-600/10 border border-green-500/30 hover:border-green-500 text-green-400 font-bold py-6 px-4 rounded shadow-[0_0_20px_rgba(34,197,94,0.1)] hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300 uppercase"
+            onClick={() => alSiguiente('mobile')}
+          >
+            Proyecto_Mobile
+          </button>
+          
+          <button
+            className="bg-zinc-800 hover:bg-green-600/10 border border-green-500/30 hover:border-green-500 text-green-400 font-bold py-6 px-4 rounded shadow-[0_0_20px_rgba(34,197,94,0.1)] hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300 uppercase"
+            onClick={() => alSiguiente('api')}
+          >
+            Proyecto_API
+          </button>
+          
+          <button
+            className="bg-zinc-800 hover:bg-green-600/10 border border-green-500/30 hover:border-green-500 text-green-400 font-bold py-6 px-4 rounded shadow-[0_0_20px_rgba(34,197,94,0.1)] hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300 uppercase"
+            onClick={() => alSiguiente('custom')}
+          >
+            Proyecto_Personalizado
+          </button>
         </div>
-      ) : (
-        <Login onLogin={handleLogin} />
-      )}
-      {logged && (
-        <main className="flex-1 max-w-7xl mx-auto p-4">
-          <div className="flex w-full lg:h-screen">
-            <div className="w-24 lg:w-64 fixed top-24 hidden lg:block left-4 bg-white shadow-md rounded p-4">
-              <ul>
-                <li>
-                  <a
-                    href="#"
-                    className="flex justify-between items-center py-2 text-gray-600 hover:text-gray-900"
-                  >
-                    <span>Monitoreo de Gnosis</span>
-                    <span className="ml-2">
-                      <i className="fas fa-tachometer-alt" />
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex justify-between items-center py-2 text-gray-600 hover:text-gray-900"
-                  >
-                    <span>Configuración de alertas</span>
-                    <span className="ml-2">
-                      <i className="fas fa-bell" />
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex justify-between items-center py-2 text-gray-600 hover:text-gray-900"
-                  >
-                    <span>Acceso a reportes</span>
-                    <span className="ml-2">
-                      <i className="fas fa-file" />
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex justify-between items-center py-2 text-gray-600 hover:text-gray-900"
-                  >
-                    <span>Desplegar agentes y ejecutar tareas</span>
-                    <span className="ml-2">
-                      <i className="fas fa-robot" />
-                    </span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className="w-full lg:w-7xl mx-auto p-4">
-              {sintonizado && <Dashboard />}
-              {!sintonizado && (
-                <div className="text-center">
-                  <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
-                  <p>Pulse el botón para sintonizar</p>
-                  <button
-                    onClick={handleSintonizar}
-                    className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
-                  >
-                    Sintonizar
-                  </button>
-                </div>
-              )}
-              {!logged && <Reportes />}
-              {logged && !sintonizado && (
-                <MonitoreoGnosis />
-              )}
-            </div>
-          </div>
-        </main>
-      )}
+      </div>
     </div>
   );
 }
 
-        </li>
-      </ul>
-    </div>
-  );
-};
+export default PageSeleccionProyecto;
