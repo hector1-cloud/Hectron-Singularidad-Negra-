@@ -1,4 +1,4 @@
-Viteeact, { useState } from 'react';
+import React, { useState } from 'react';
 
 function PageSeleccionProyecto({ alSiguiente }) {
   const [seleccion, setSeleccion] = useState('');
@@ -26,12 +26,11 @@ function PageSeleccionProyecto({ alSiguiente }) {
         </div>
 
         <button
-          className="w-full bg-zinc-100 hover:bg-white text-black font-black py-4 rounded disabled:opacity-20 transition-all duration-300 shadow-[0_4px_15px_rgba(255,255,255,0.1)] uppercase tracking-widest text-sm"
+          className="w-full bg-zinc-100 hover:bg-white text-black font-black py-4 rounded disabled:opacity-20 transition-all duration-300 shadow-[0_4px_15px_rgba(255,255,255,0.1)] uppercase tracking-wider"
           onClick={() => alSiguiente(seleccion)}
           disabled={!seleccion}
         >
-          {"SIGUIENTE _PASO >>"}
-          {"SIGUIENTE_PASO >>"}
+          SIGUIENTE_PASO >>
         </button>
 
         <div className="mt-6 flex justify-between items-center opacity-20">
