@@ -29,6 +29,7 @@ function App() {
       {paso === 'chat' && (
         <ChatTerminal proyecto={proyecto} modelo={modelo} />
       )}
+      <SpeedInsights />
     </div>
   );
 }
