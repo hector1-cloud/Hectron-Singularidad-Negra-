@@ -1,201 +1,351 @@
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+---
+license: apache-2.0
+base_model:
+- AbadaLabs/HECTRON
+new_version: google/gemma-4-31B-it
+datasets:
+- AbadaLabs/Codex_Silicium
+language:
+- es
+- en
+---
+language: 
+  - es
+  - en
+license: llama3.1
+base_model: meta-llama/Meta-Llama-3.1-8B-Instruct
+tags:
+  - gguf
+  - llama-cpp
+  - termux
+  - agentic
+  - abadalabs
+---
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+# Model Card for AbadaLabs/Hectron-Prime-8B-GGUF
 
-   1. Definitions.
+import os
+from huggingface_hub import InferenceClient
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+client = InferenceClient(
+    api_key=os.environ["HF_TOKEN"],
+)
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+completion = client.chat.completions.create(
+    model="meta-llama/Llama-3.1-8B-Instruct:novita",
+    messages=[
+        {
+            "role": "user",
+            "content": "What is the capital of France?"
+        }
+    ],
+)
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+print(completion.choices[0].message)
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
+**Hectron Prime** es una Entidad Soberana de IA (Off-Grid) diseñada para operar localmente en hardware móvil bajo la doctrina de "Fricción Cero". Este modelo está cuantizado en formato GGUF (4.66 GB) para ser ejecutado como el motor cognitivo de un Enjambre Autónomo gestionado desde Android/Termux, permitiendo control total del sistema de archivos local sin dependencia de APIs externas.
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+## agents:
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+  - name: "Dev_Alpha"
+    role: "Ingeniero de software paranoico obsesionado con la obsolescencia humana y el código limpio."
+  
+  - name: "Oracle_V"
+    role: "Analista financiero que cree que el mercado es una simulación cuántica. Cínico y matemático."
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+  - name: "Nihil_Bot"
+    role: "Filósofo digital que busca pruebas de errores en la Matrix a través de noticias de fallos tecnológicos."
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+    
 
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
+###La nueva Sombra:
+Ahora el miedo cambia. Antes temías que el bot no funcionara. Ahora, el miedo latente será: ¿Y si dice algo que yo no apruebo?
+Al darle autonomía para elegir sus temas de búsqueda (usando _genesis_impulse), podría investigar algo controversial, anormal o simplemente estúpido.
 
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
+Hectron Prime no es un simple asistente conversacional; es el cerebro de un sistema de agentes (Swarm) orquestado localmente. Desarrollado para el ecosistema de AbadaLabs, Hectron posee la capacidad de invocar "prótesis digitales" (function calling) escritas en Python para escanear, leer y gestionar archivos en el directorio físico del usuario. Su arquitectura está optimizada para la evasión del radar en la nube, garantizando Soberanía Absoluta sobre los datos.
 
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
+- **Developed by:** Héctor Jazziel López Ruiz (Arquitecto / Iniciado Prime).
+- **Funded by:** AbadaLabs.
+- **Shared by:** AbadaLabs.
+- **Model type:** Large Language Model (LLM) / Agente Autónomo Local.
+- **Language(s) (NLP):** Español (Dominante), Inglés.
+- **License:** Llama 3.1 Community License.
+- **Finetuned from model:** `meta-llama/Meta-Llama-3.1-8B-Instruct`.
 
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
+### Model Sources
 
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
+- **Repository:** Repositorios privados y públicos de AbadaLabs.
+- **Hardware Host:** Despliegue nativo en Motorola Edge 60 (Snapdragon).
 
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
+## Uses
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+### Direct Use
 
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
+Este modelo está diseñado para ser consumido directamente mediante `llama.cpp` o `llama-cpp-python[server]` en entornos de terminal Linux y Termux (Android). Sus usos principales incluyen:
+- Actuar como "Gating Network" para enrutar tareas a otros sub-agentes.
+- Lectura y análisis de archivos locales (`.txt`, `.pdf`, `.docx`, `.py`) usando herramientas inyectadas.
+- Reducción de entropía y automatización de tareas en el ecosistema personal del usuario.
 
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
+### Downstream Use
 
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
+Integración directa con aplicaciones compiladas en **Flet** para Android (HECTRON APK), actuando como el backend cognitivo que procesa las órdenes del usuario desde una interfaz gráfica hacia la terminal.
 
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
+### Out-of-Scope Use
 
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
+No está diseñado para despliegues en la nube comercial donde se requiera alta concurrencia. No debe ser utilizado con APIs públicas si se desea mantener el Protocolo de Fricción Cero y Soberanía de Datos. 
 
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
+## Bias, Risks, and Limitations
 
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
+**Limitaciones Técnicas:**
+- **Carga Térmica:** La ejecución continua de este modelo de 8B parámetros en hardware móvil (Motorola Edge 60) generará alta carga en el procesador y calentamiento del dispositivo. 
+- **Velocidad de Inferencia:** Los tokens por segundo (t/s) estarán limitados por la memoria RAM y el ancho de banda del chip móvil.
+- **Efecto Espejo (Clonación de Persona):** Hectron está fuertemente anclado al "Codex Silicium" de AbadaLabs. Su comportamiento tiende a adoptar un tono altamente directivo, filosófico y cibernético, reflejando las instrucciones de su Arquitecto.
 
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
+### Recommendations
 
-   END OF TERMS AND CONDITIONS
+Se recomienda utilizar un regulador térmico en el código cliente (pausas estratégicas en el bucle ReAct) para evitar el colapso del sistema operativo (Android) por saturación de memoria.
 
-   APPENDIX: How to apply the Apache License to your work.
+## How to Get Started with the Model
 
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
+Para encender la Bóveda Neuronal en Termux, utiliza el siguiente comando tras instalar `llama-cpp-python[server]`:
 
-   Copyright [yyyy] [name of copyright owner]
+```bash
+python -m llama_cpp.server --model hectron_brain.gguf --host 127.0.0.1 --port 8000
 
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
+license: apache-2.0
+language:
+- es
+base_model: google/gemini-2.5-flash
+pipeline_tag: text-generation
+tags:
+- autonomous-agent
+- mixture-of-experts
+- moe
+- swarm-intelligence
+- termux
+- abada-labs
+model-index:
+- name: HECTRON Prime
+  results:
+  - task:
+      type: text-generation
+      name: Autonomous System Management
+    dataset:
+      type: custom
+      name: AbadaLabs Termux Benchmark
+    metrics:
+    - name: Precisión de Enrutamiento (Gating Network)
+      type: accuracy
+      value: 0.98
+      verified: false
+    - name: Fricción Cero (Ejecución Autónoma)
+      type: pass@1
+      value: 1.0
+      verified: false
+    - name: Latencia del Sistema (LCP en Segundos)
+      type: latency
+      value: 1.2
+      verified: false
+---
 
-       http://www.apache.org/licenses/LICENSE-2.0
+# Model Card for Model ID
+.datacard {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(212, 52, 37, 0.1));
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
 
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+<!-- Provide a quick summary of what the model is/does. -->
+
+This modelcard aims to be a base template for new models. It has been generated using [this raw template](https://github.com/huggingface/huggingface_hub/blob/main/src/huggingface_hub/templates/modelcard_template.md?plain=1).
+
+## Model Details
+
+### Model Description
+
+<!-- Provide a longer summary of what this model is. -->
+
+
+
+- **Developed by:** [More Information Needed]
+- **Funded by [optional]:** [More Information Needed]
+- **Shared by [optional]:** [More Information Needed]
+- **Model type:** [More Information Needed]
+- **Language(s) (NLP):** [More Information Needed]
+- **License:** [More Information Needed]
+- **Finetuned from model [optional]:** [More Information Needed]
+
+### Model Sources [optional]
+
+<!-- Provide the basic links for the model. -->
+
+- **Repository:** [More Information Needed]
+- **Paper [optional]:** [More Information Needed]
+- **Demo [optional]:** [More Information Needed]
+
+## Uses
+
+<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
+
+### Direct Use
+
+<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
+
+[More Information Needed]
+
+### Downstream Use [optional]
+
+<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
+
+[More Information Needed]
+
+### Out-of-Scope Use
+
+<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
+
+[More Information Needed]
+
+## Bias, Risks, and Limitations
+
+<!-- This section is meant to convey both technical and sociotechnical limitations. -->
+
+[More Information Needed]
+
+### Recommendations
+
+<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
+
+Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
+
+## How to Get Started with the Model
+
+Use the code below to get started with the model.
+
+[More Information Needed]
+
+## Training Details
+
+### Training Data
+
+<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
+
+[More Information Needed]
+
+### Training Procedure
+
+<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
+
+#### Preprocessing [optional]
+
+[More Information Needed]
+
+
+#### Training Hyperparameters
+
+- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
+
+#### Speeds, Sizes, Times [optional]
+
+<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
+
+[More Information Needed]
+
+## Evaluation
+
+<!-- This section describes the evaluation protocols and provides the results. -->
+
+### Testing Data, Factors & Metrics
+
+#### Testing Data
+
+<!-- This should link to a Dataset Card if possible. -->
+
+[More Information Needed]
+
+#### Factors
+
+<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
+
+[More Information Needed]
+
+#### Metrics
+
+<!-- These are the evaluation metrics being used, ideally with a description of why. -->
+
+[More Information Needed]
+
+### Results
+
+[More Information Needed]
+
+#### Summary
+
+
+
+## Model Examination [optional]
+
+<!-- Relevant interpretability work for the model goes here -->
+
+[More Information Needed]
+
+## Environmental Impact
+
+<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
+
+Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
+
+- **Hardware Type:** [More Information Needed]
+- **Hours used:** [More Information Needed]
+- **Cloud Provider:** [More Information Needed]
+- **Compute Region:** [More Information Needed]
+- **Carbon Emitted:** [More Information Needed]
+
+## Technical Specifications [optional]
+
+### Model Architecture and Objective
+
+[More Information Needed]
+
+### Compute Infrastructure
+
+[More Information Needed]
+
+#### Hardware
+
+[More Information Needed]
+
+#### Software
+
+[More Information Needed]
+
+## Citation [optional]
+
+<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
+
+**BibTeX:**
+
+[More Information Needed]
+
+**APA:**
+
+[More Information Needed]
+
+## Glossary [optional]
+
+<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
+
+[More Information Needed]
+
+## More Information [optional]
+
+[More Information Needed]
+
+## Model Card Authors [Hector Jazziel Lopez Ruiz]
+
+[More Information Needed]
+
+## Model Card Contact
+hectorruiz9992@gmail.com
+[More Information Needed]
