@@ -4,6 +4,7 @@ import PageSeleccionProyecto from './components/PageSeleccionProyecto';
 import PageConfiguracionIA from './components/PageConfiguracionIA';
 import ChatTerminal from './components/ChatTerminal'; // El nuevo componente
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const [paso, setPaso] = useState('inicio');
@@ -30,6 +31,7 @@ function App() {
         <ChatTerminal proyecto={proyecto} modelo={modelo} />
       )}
       <SpeedInsights />
+      <Analytics />
     </div>
   );
 }
