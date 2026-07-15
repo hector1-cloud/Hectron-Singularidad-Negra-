@@ -45,3 +45,4 @@ function PageSeleccionProyecto({ alSiguiente }) {
   );
 }
 
+export default PageSeleccionProyecto;
